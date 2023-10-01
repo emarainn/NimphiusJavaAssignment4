@@ -97,6 +97,8 @@ public class Main {
     }
 
     private static void readFile() throws IOException, ClassNotFoundException {
+        //Reads a paint calculator object from a file and sets it to the field.
+        // Using exception handling, prints an error if the file cannot be read.
         File filename = new File ("paintFile.txt");
 
         try{
@@ -112,10 +114,16 @@ public class Main {
     }
 
     //I got help for read and write...
-    private static void writeFile() throws IOException, ClassNotFoundException {
+    private static void writeFile() throws ClassNotFoundException, IOException {
+        //	Writes the paint calculator field to a file.
+        //	Using exception handling, prints an error if the file cannot be written.
         FileWriter writer = new FileWriter("paintFile.txt", true);
         PrintWriter printer = new PrintWriter(writer);
-        for (Room room : paintCalculator.roomList) printer.println(room.getArea());
+
+        for (Room room : paintCalculator.roomList) {
+            printer.println(room.getArea());
+        }
+
         printer.flush();
         printer.close();
         System.out.println("Added to File");
